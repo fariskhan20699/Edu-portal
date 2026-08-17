@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Home Acedemy | Educational Portal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ============ TOAST CONTAINER ============ -->
+<div id="toastContainer" class="toast-container" aria-live="polite"></div>
+
+<!-- ============ CONFIRM DIALOG ============ -->
+<div id="confirmOverlay" class="modal-overlay hidden">
+  <div class="modal confirm-modal">
+    <div class="confirm-icon">!</div>
+    <p id="confirmMessage">Are you sure?</p>
+    <div class="modal-actions">
+      <button class="btn btn-ghost" id="confirmCancelBtn">Cancel</button>
+      <button class="btn btn-danger" id="confirmOkBtn">Confirm</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- LOGIN SCREEN -->
+<!-- ============================================================ -->
+<section id="loginScreen" class="screen login-screen">
+  <div class="login-wrap">
+    <div class="login-brand">
+      <div class="crest">
+        <svg viewBox="0 0 100 100" width="56" height="56" aria-hidden="true">
+          <circle cx="50" cy="50" r="46" fill="none" stroke="currentColor" stroke-width="2.5"/>
+          <circle cx="50" cy="50" r="38" fill="none" stroke="currentColor" stroke-width="1"/>
+          <path d="M50 22 L60 44 L84 44 L64 58 L72 82 L50 68 L28 82 L36 58 L16 44 L40 44 Z" fill="currentColor"/>
+        </svg>
+      </div>
+      <h1>Home Acedmy System</h1>
+      <p class="login-tagline">Register &amp; Records Portal · Classes III&ndash;VI</p>
+      <div class="login-copy">
+        <p>Sign in to open the class register  attendance ledgers, assignment sheets, examination slips and results, all kept in one place.</p>
+      </div>
+      <p class="login-footnote">Developed by Muhammad Faris khan. All Right reserved</p>
+    </div>
+
+    <div class="login-card">
+      <div class="role-tabs" role="tablist">
+        <button class="role-tab active" data-role="admin" role="tab" aria-selected="true">Teacher / Admin</button>
+        <button class="role-tab" data-role="student" role="tab" aria-selected="false">Student</button>
+      </div>
+
+      <form id="adminLoginForm" class="login-form" autocomplete="off">
+        <label class="field">
+          <span class="field-label">Username</span>
+          <input type="text" id="adminUsername" placeholder="admin" required>
+        </label>
+        <label class="field">
+          <span class="field-label">Password</span>
+          <input type="password" id="adminPassword" placeholder="••••••••" required>
+        </label>
+        <button type="submit" class="btn btn-primary btn-block">Enter Dashboard</button>
+      </form>
+
+      <form id="studentLoginForm" class="login-form hidden" autocomplete="off">
+        <label class="field">
+          <span class="field-label">Login ID</span>
+          <input type="text" id="studentLoginId" placeholder="e.g. ali101" required>
+        </label>
+        <label class="field">
+          <span class="field-label">Password</span>
+          <input type="password" id="studentPassword" placeholder="••••••••" required>
+        </label>
+        <button type="submit" class="btn btn-primary btn-block">Enter My Dashboard</button>
+        <p class="hint">Try: <span class="mono">ali101</span> / <span class="mono">pass101</span></p>
+      </form>
+
+      <p id="loginError" class="login-error hidden"></p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- ADMIN APP -->
+<!-- ============================================================ -->
+<section id="adminApp" class="app-shell screen hidden">
+  <button class="hamburger" id="adminHamburger" aria-label="Toggle menu">
+    <span></span><span></span><span></span>
+  </button>
+  <div class="sidebar-backdrop" id="adminBackdrop"></div>
+
+  <aside class="sidebar" id="adminSidebar">
+    <div class="sidebar-brand">
+      <div class="crest small"><svg viewBox="0 0 100 100" width="30" height="30"><circle cx="50" cy="50" r="46" fill="none" stroke="currentColor" stroke-width="3"/><path d="M50 22 L60 44 L84 44 L64 58 L72 82 L50 68 L28 82 L36 58 L16 44 L40 44 Z" fill="currentColor"/></svg></div>
+      <div>
+        <strong>Home Acedmy</strong>
+        <span>Admin Pannel</span>
+      </div>
+    </div>
+    <nav class="sidebar-nav" id="adminNav">
+      <button class="nav-item active" data-view="dashboard">
+        <span class="nav-ic">▣</span> Dashboard
+      </button>
+      <button class="nav-item" data-view="students">
+        <span class="nav-ic">☰</span> Students
+      </button>
+      <button class="nav-item" data-view="homework">
+        <span class="nav-ic">✎</span> Homework
+      </button>
+      <button class="nav-item" data-view="tests">
+        <span class="nav-ic">◱</span> Tests
+      </button>
+      <button class="nav-item" data-view="results">
+        <span class="nav-ic">✓</span> Results
+      </button>
+      <button class="nav-item" data-view="rollslips">
+        <span class="nav-ic">▤</span> Roll Number Slips
+      </button>
+      <button class="nav-item" data-view="alldata">
+        <span class="nav-ic">◈</span> View All Data
+      </button>
+    </nav>
+    <div class="sidebar-footer">
+      <button class="btn btn-ghost btn-block" id="adminLogoutBtn">⎋ Logout</button>
+    </div>
+  </aside>
+
+  <div class="main-col">
+    <header class="topbar">
+      <div class="topbar-title" id="adminViewTitle">Dashboard</div>
+      <div class="topbar-user">
+        <span class="badge badge-navy">Admin</span>
+        <span>Teacher / Admin</span>
+      </div>
+    </header>
+
+    <main class="content" id="adminContent">
+
+      <!-- DASHBOARD -->
+      <div class="view" data-view="dashboard">
+        <div class="cards-grid" id="adminSummaryCards"></div>
+        <div class="panel">
+          <div class="panel-head"><h3>Recently Added Students</h3></div>
+          <div class="table-wrap">
+            <table class="data-table" id="recentStudentsTable"></table>
+          </div>
+        </div>
+      </div>
+
+      <!-- STUDENTS -->
+      <div class="view hidden" data-view="students">
+        <div class="panel">
+          <div class="panel-head panel-head-row">
+            <h3>Student Register</h3>
+            <button class="btn btn-primary" id="openAddStudentBtn">+ Add Student</button>
+          </div>
+          <div class="toolbar">
+            <input type="text" id="studentSearchInput" class="search-input" placeholder="Search by name, roll no, student ID or login ID…">
+            <select id="studentClassFilter" class="select-input">
+              <option value="all">All Classes</option>
+              <option value="3">Class 3</option>
+              <option value="4">Class 4</option>
+              <option value="5">Class 5</option>
+              <option value="6">Class 6</option>
+            </select>
+          </div>
+          <div class="table-wrap">
+            <table class="data-table" id="studentsTable"></table>
+          </div>
+        </div>
+      </div>
+
+      <!-- HOMEWORK -->
+      <div class="view hidden" data-view="homework">
+        <div class="panel">
+          <div class="panel-head panel-head-row">
+            <h3>Homework Sheets</h3>
+            <button class="btn btn-primary" id="openAddHomeworkBtn">+ Add Homework</button>
+          </div>
+          <div class="toolbar">
+            <select id="homeworkClassFilter" class="select-input">
+              <option value="all">All Classes</option>
+              <option value="3">Class 3</option>
+              <option value="4">Class 4</option>
+              <option value="5">Class 5</option>
+              <option value="6">Class 6</option>
+            </select>
+          </div>
+          <div class="cards-list" id="homeworkList"></div>
+        </div>
+      </div>
+
+      <!-- TESTS -->
+      <div class="view hidden" data-view="tests">
+        <div class="panel">
+          <div class="panel-head panel-head-row">
+            <h3>Tests &amp; Examinations</h3>
+            <button class="btn btn-primary" id="openAddTestBtn">+ Create Test</button>
+          </div>
+          <div class="toolbar">
+            <select id="testClassFilter" class="select-input">
+              <option value="all">All Classes</option>
+              <option value="3">Class 3</option>
+              <option value="4">Class 4</option>
+              <option value="5">Class 5</option>
+              <option value="6">Class 6</option>
+            </select>
+          </div>
+          <div class="cards-list" id="testsList"></div>
+        </div>
+      </div>
+
+      <!-- RESULTS -->
+      <div class="view hidden" data-view="results">
+        <div class="panel">
+          <div class="panel-head panel-head-row">
+            <h3>Publish a Result</h3>
+          </div>
+          <form id="publishResultForm" class="grid-form">
+            <label class="field">
+              <span class="field-label">Class</span>
+              <select id="resultClassSelect" class="select-input" required>
+                <option value="">Select class</option>
+                <option value="3">Class 3</option>
+                <option value="4">Class 4</option>
+                <option value="5">Class 5</option>
+                <option value="6">Class 6</option>
+              </select>
+            </label>
+            <label class="field">
+              <span class="field-label">Student</span>
+              <select id="resultStudentSelect" class="select-input" required>
+                <option value="">Select class first</option>
+              </select>
+            </label>
+            <label class="field">
+              <span class="field-label">Test</span>
+              <select id="resultTestSelect" class="select-input" required>
+                <option value="">Select class first</option>
+              </select>
+            </label>
+            <label class="field">
+              <span class="field-label">Total Marks</span>
+              <input type="number" id="resultTotalMarks" min="1" required>
+            </label>
+            <label class="field">
+              <span class="field-label">Obtained Marks</span>
+              <input type="number" id="resultObtainedMarks" min="0" required>
+            </label>
+            <div class="field field-actions">
+              <button type="submit" class="btn btn-primary btn-block">Publish Result</button>
+            </div>
+          </form>
+        </div>
+
+        <div class="panel">
+          <div class="panel-head panel-head-row">
+            <h3>Published Results</h3>
+          </div>
+          <div class="toolbar">
+            <select id="resultFilterClass" class="select-input">
+              <option value="all">All Classes</option>
+              <option value="3">Class 3</option>
+              <option value="4">Class 4</option>
+              <option value="5">Class 5</option>
+              <option value="6">Class 6</option>
+            </select>
+            <select id="resultFilterSubject" class="select-input">
+              <option value="all">All Subjects</option>
+            </select>
+          </div>
+          <div class="table-wrap">
+            <table class="data-table" id="resultsTable"></table>
+          </div>
+        </div>
+      </div>
+
+      <!-- ROLL SLIPS -->
+      <div class="view hidden" data-view="rollslips">
+        <div class="panel">
+          <div class="panel-head"><h3>Generate a Roll Number Slip</h3></div>
+          <form id="rollSlipForm" class="grid-form">
+            <label class="field">
+              <span class="field-label">Student</span>
+              <select id="rollSlipStudentSelect" class="select-input" required>
+                <option value="">Select a student</option>
+              </select>
+            </label>
+            <label class="field">
+              <span class="field-label">Exam / Test Name</span>
+              <input type="text" id="rollSlipExamName" placeholder="e.g. Mid-Term Examination" required>
+            </label>
+            <label class="field">
+              <span class="field-label">Exam Date</span>
+              <input type="date" id="rollSlipExamDate" required>
+            </label>
+            <label class="field field-wide">
+              <span class="field-label">Subjects (comma separated)</span>
+              <input type="text" id="rollSlipSubjects" placeholder="Mathematics, English, Science, Urdu" required>
+            </label>
+            <div class="field field-actions">
+              <button type="submit" class="btn btn-primary btn-block">Generate Slip</button>
+            </div>
+          </form>
+        </div>
+        <div class="panel" id="rollSlipPreviewPanel" style="display:none;">
+          <div class="panel-head panel-head-row">
+            <h3>Slip Preview</h3>
+            <button class="btn btn-secondary" id="printRollSlipBtn">🖶 Print / Save as PDF</button>
+          </div>
+          <div id="rollSlipPreviewMount"></div>
+        </div>
+      </div>
+
+      <!-- ALL DATA -->
+      <div class="view hidden" data-view="alldata">
+        <div class="panel">
+          <div class="panel-head"><h3>Raw Data Overview</h3></div>
+          <div class="all-data-tabs" id="allDataTabs">
+            <button class="chip active" data-set="students">Students</button>
+            <button class="chip" data-set="homework">Homework</button>
+            <button class="chip" data-set="tests">Tests</button>
+            <button class="chip" data-set="results">Results</button>
+            <button class="chip" data-set="rollSlips">Roll Slips</button>
+          </div>
+          <div class="table-wrap">
+            <table class="data-table" id="allDataTable"></table>
+          </div>
+        </div>
+      </div>
+
+    </main>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- STUDENT APP -->
+<!-- ============================================================ -->
+<section id="studentApp" class="app-shell screen hidden">
+  <button class="hamburger" id="studentHamburger" aria-label="Toggle menu">
+    <span></span><span></span><span></span>
+  </button>
+  <div class="sidebar-backdrop" id="studentBackdrop"></div>
+
+  <aside class="sidebar" id="studentSidebar">
+    <div class="sidebar-brand">
+      <div class="crest small"><svg viewBox="0 0 100 100" width="30" height="30"><circle cx="50" cy="50" r="46" fill="none" stroke="currentColor" stroke-width="3"/><path d="M50 22 L60 44 L84 44 L64 58 L72 82 L50 68 L28 82 L36 58 L16 44 L40 44 Z" fill="currentColor"/></svg></div>
+      <div>
+        <strong>Home Acedmy</strong>
+        <span>Student Portal</span>
+      </div>
+    </div>
+    <nav class="sidebar-nav" id="studentNav">
+      <button class="nav-item active" data-view="dashboard"><span class="nav-ic">▣</span> Dashboard</button>
+      <button class="nav-item" data-view="profile"><span class="nav-ic">◍</span> My Profile</button>
+      <button class="nav-item" data-view="homework"><span class="nav-ic">✎</span> Homework</button>
+      <button class="nav-item" data-view="tests"><span class="nav-ic">◱</span> Tests</button>
+      <button class="nav-item" data-view="results"><span class="nav-ic">✓</span> Results</button>
+      <button class="nav-item" data-view="rollslip"><span class="nav-ic">▤</span> Roll Number Slip</button>
+    </nav>
+    <div class="sidebar-footer">
+      <button class="btn btn-ghost btn-block" id="studentLogoutBtn">⎋ Logout</button>
+    </div>
+  </aside>
+
+  <div class="main-col">
+    <header class="topbar">
+      <div class="topbar-title" id="studentViewTitle">Dashboard</div>
+      <div class="topbar-user">
+        <span class="badge badge-sky">Student</span>
+        <span id="studentTopbarName">—</span>
+      </div>
+    </header>
+
+    <main class="content" id="studentContent">
+
+      <!-- DASHBOARD -->
+      <div class="view" data-view="dashboard">
+        <h2 class="welcome-line">Welcome <span id="studentWelcomeName">Student</span></h2>
+        <div class="cards-grid" id="studentSummaryCards"></div>
+      </div>
+
+      <!-- PROFILE -->
+      <div class="view hidden" data-view="profile">
+        <div class="panel">
+          <div class="panel-head"><h3>My Profile</h3></div>
+          <div class="profile-grid" id="studentProfileGrid"></div>
+        </div>
+      </div>
+
+      <!-- HOMEWORK -->
+      <div class="view hidden" data-view="homework">
+        <div class="panel">
+          <div class="panel-head"><h3>Assigned Homework</h3></div>
+          <div class="cards-list" id="studentHomeworkList"></div>
+        </div>
+      </div>
+
+      <!-- TESTS LIST -->
+      <div class="view hidden" data-view="tests">
+        <div class="panel">
+          <div class="panel-head"><h3>Available Tests</h3></div>
+          <div class="cards-list" id="studentTestsList"></div>
+        </div>
+      </div>
+
+      <!-- TAKE TEST -->
+      <div class="view hidden" data-view="taketest">
+        <div class="panel" id="takeTestPanel"></div>
+      </div>
+
+      <!-- RESULTS -->
+      <div class="view hidden" data-view="results">
+        <div class="panel">
+          <div class="panel-head"><h3>My Results</h3></div>
+          <div class="table-wrap">
+            <table class="data-table" id="studentResultsTable"></table>
+          </div>
+        </div>
+      </div>
+
+      <!-- ROLL SLIP -->
+      <div class="view hidden" data-view="rollslip">
+        <div class="panel">
+          <div class="panel-head panel-head-row">
+            <h3>My Roll Number Slip</h3>
+            <button class="btn btn-secondary hidden" id="studentPrintSlipBtn">🖶 Print / Save as PDF</button>
+          </div>
+          <div id="studentRollSlipMount"></div>
+        </div>
+      </div>
+
+    </main>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SHARED MODAL (Add/Edit Student, Homework, Test, Questions) -->
+<!-- ============================================================ -->
+<div id="modalOverlay" class="modal-overlay hidden">
+  <div class="modal" id="modalBox">
+    <button class="modal-close" id="modalCloseBtn">✕</button>
+    <div id="modalContent"></div>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
