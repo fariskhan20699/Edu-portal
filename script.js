@@ -40,7 +40,7 @@ function buildSampleData() {
   students = [
     { id: 1, name: "Laiba Bibi", fatherName: "Mailk Rustam Khan", className: "6", rollNo: "1001", studentId: "ST001", loginId: "laiba@1001", password: "laiba321", dob: "2014-09-12", gender: "Female", contact: "03219123757", address: "Shams Town Islamabad", admissionDate: "2026-04-01" },
     { id: 2, name: "Noor Fatima", fatherName: "Mailk Rustam Khan", className: "4", rollNo: "1002", studentId: "ST002", loginId: "noor@1002", password: "noor321", dob: "2016-05-25", gender: "Female", contact: "03021-9123757", address: "Shams Town Islamabad", admissionDate: "2026-04-01" },
-    { id: 3, name: "Ahmed Raza", fatherName: "Aanir Khan", className: "6", rollNo: "1003", studentId: "ST003", loginId: "mishal@1003", password: "mishal321", dob: "2013-02-02", gender: "Female", contact: "03041-9477794", address: "G-6/2 Islamabad", admissionDate: "2026-04-01" }
+    { id: 3, name: "Mishal Khan", fatherName: "Aanir Khan", className: "6", rollNo: "1003", studentId: "ST003", loginId: "mishal@1003", password: "mishal321", dob: "2013-02-02", gender: "Female", contact: "03041-9477794", address: "G-6/2 Islamabad", admissionDate: "2026-04-01" }
   ];
 
   homework = [
