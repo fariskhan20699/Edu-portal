@@ -38,14 +38,9 @@ function calculateStatus(percentage) {
 
 function buildSampleData() {
   students = [
-    { id: 1, name: "Ali Khan", fatherName: "Ahmed Khan", className: "3", rollNo: "101", studentId: "ST001", loginId: "ali101", password: "pass101", dob: "2017-03-12", gender: "Male", contact: "0300-1112233", address: "Street 4, Model Town", admissionDate: "2023-04-01" },
-    { id: 2, name: "Sara Ahmed", fatherName: "Imran Ahmed", className: "3", rollNo: "102", studentId: "ST002", loginId: "sara102", password: "pass102", dob: "2017-06-20", gender: "Female", contact: "0300-2223344", address: "House 9, Green Town", admissionDate: "2023-04-01" },
-    { id: 3, name: "Ahmed Raza", fatherName: "Bilal Raza", className: "4", rollNo: "201", studentId: "ST003", loginId: "ahmed201", password: "pass201", dob: "2016-01-15", gender: "Male", contact: "0301-3334455", address: "Flat 2B, Satellite Town", admissionDate: "2022-04-01" },
-    { id: 4, name: "Ayesha Khan", fatherName: "Nadeem Khan", className: "4", rollNo: "202", studentId: "ST004", loginId: "ayesha202", password: "pass202", dob: "2016-09-02", gender: "Female", contact: "0301-4445566", address: "Street 12, Township", admissionDate: "2022-04-01" },
-    { id: 5, name: "Hamza Ali", fatherName: "Tariq Ali", className: "5", rollNo: "301", studentId: "ST005", loginId: "hamza301", password: "pass301", dob: "2015-02-27", gender: "Male", contact: "0302-5556677", address: "House 5, Johar Town", admissionDate: "2021-04-01" },
-    { id: 6, name: "Fatima Noor", fatherName: "Shahid Noor", className: "5", rollNo: "302", studentId: "ST006", loginId: "fatima302", password: "pass302", dob: "2015-11-08", gender: "Female", contact: "0302-6667788", address: "Street 7, Gulberg", admissionDate: "2021-04-01" },
-    { id: 7, name: "Usman Khan", fatherName: "Faisal Khan", className: "6", rollNo: "401", studentId: "ST007", loginId: "usman401", password: "pass401", dob: "2014-05-19", gender: "Male", contact: "0303-7778899", address: "House 22, DHA", admissionDate: "2020-04-01" },
-    { id: 8, name: "Hania Ahmed", fatherName: "Waqas Ahmed", className: "6", rollNo: "402", studentId: "ST008", loginId: "hania402", password: "pass402", dob: "2014-08-30", gender: "Female", contact: "0303-8889900", address: "Street 3, Cantt", admissionDate: "2020-04-01" }
+    { id: 1, name: "Laiba Bibi", fatherName: "Mailk Rustam Khan", className: "6", rollNo: "1001", studentId: "ST001", loginId: "laiba@1001", password: "laiba321", dob: "2014-09-12", gender: "Female", contact: "03219123757", address: "Shams Town Islamabad", admissionDate: "2026-04-01" },
+    { id: 2, name: "Noor Fatima", fatherName: "Mailk Rustam Khan", className: "4", rollNo: "1002", studentId: "ST002", loginId: "noor@1002", password: "noor321", dob: "2016-05-25", gender: "Female", contact: "03021-9123757", address: "Shams Town Islamabad", admissionDate: "2026-04-01" },
+    { id: 3, name: "Ahmed Raza", fatherName: "Aanir Khan", className: "6", rollNo: "1003", studentId: "ST003", loginId: "mishal@1003", password: "mishal321", dob: "2013-02-02", gender: "Female", contact: "03041-9477794", address: "G-6/2 Islamabad", admissionDate: "2026-04-01" }
   ];
 
   homework = [
