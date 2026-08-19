@@ -1,6 +1,6 @@
 # 🏫 Home Academy | Educational Portal
 
-A modern and responsive **School Management & Educational Portal** built using **HTML5, CSS3, and Vanilla JavaScript**.
+A modern and responsive **Educational Portal** built using **HTML5, CSS3, and Vanilla JavaScript**.
 
 Home Academy is designed to help schools manage students from **Class 3 to Class 6**, including student records, homework, online tests, examination results, and roll number slips.
 
