@@ -97,7 +97,7 @@ function buildSampleData() {
       id: 5,
       title: "Social studies",
       subject: "Science",
-      className: "3",
+      className: "4",
       description: "Complete the water cycle worksheet.",
       dueDate: "2026-10-14",
       link: "https://drive.google.com/drive/quota"
