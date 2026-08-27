@@ -43,7 +43,7 @@ function buildSampleData() {
     id: 5,
     title: "Science Assignment",
     subject: "Science",
-    className: "5",
+    className: "6",
     description: "Complete the water cycle worksheet.",
     dueDate: "2026-09-15",
     link: "https://drive.google.com/drive/quota"
