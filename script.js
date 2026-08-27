@@ -1,8 +1,3 @@
-/* ==========================================================================
-   WILLOW CREEK ACADEMY — SCHOOL MANAGEMENT PORTAL
-   Vanilla JS · localStorage persistence · no backend
-   ========================================================================== */
-
 /* ---------------------------------------------------------------------
    1. DATA LAYER
    --------------------------------------------------------------------- */
@@ -44,14 +39,14 @@ function buildSampleData() {
   ];
 
   homework = [
-    { id: 1, title: "Mathematics Chapter 3", subject: "Mathematics", className: "3", description: "Solve questions 1–20 from the chapter on addition and subtraction.", dueDate: "2026-09-10" },
+   /* { id: 1, title: "Mathematics Chapter 3", subject: "Mathematics", className: "3", description: "Solve questions 1–20 from the chapter on addition and subtraction.", dueDate: "2026-09-10" },
     { id: 2, title: "English Comprehension", subject: "English", className: "4", description: "Read the passage on page 34 and answer the five questions that follow.", dueDate: "2026-09-12" },
-    { id: 3, title: "Science — The Water Cycle", subject: "Science", className: "5", description: "Draw and label a diagram of the water cycle in your notebook.", dueDate: "2026-09-14" },
-    { id: 4, title: "Urdu Ibarat", subject: "Urdu", className: "6", description: "Rat karein or narrate saba'q number 6 in class.", dueDate: "2026-09-15" }
+    { id: 3, title: "Science  The Water Cycle", subject: "Science", className: "5", description: "Draw and label a diagram of the water cycle in your notebook.", dueDate: "2026-09-14" },
+    { id: 4, title: "Urdu Ibarat", subject: "Urdu", className: "6", description: "Rat karein or narrate saba'q number 6 in class.", dueDate: "2026-09-15" }*/
   ];
 
   tests = [
-    {
+    /*{
       id: 1, title: "Mathematics Quiz", subject: "Mathematics", className: "4", totalMarks: 20, duration: 15, testDate: "2026-09-20",
       questions: [
         { id: 1, text: "What is 5 + 5?", options: ["8", "9", "10", "11"], correct: 2 },
@@ -66,7 +61,7 @@ function buildSampleData() {
         { id: 1, text: "Choose the correct verb: She ___ to school every day.", options: ["go", "goes", "going", "gone"], correct: 1 },
         { id: 2, text: "What is the plural of 'child'?", options: ["childs", "childes", "children", "childrens"], correct: 2 }
       ]
-    }
+    }*/
   ];
 
   results = [
