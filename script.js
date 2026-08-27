@@ -85,12 +85,21 @@ function buildSampleData() {
 
   homework = [
     {
-      id: 5,
+      id: 4,
       title: "Science Assignment",
       subject: "Science",
       className: "6",
       description: "Complete the water cycle worksheet.",
       dueDate: "2026-09-15",
+      link: "https://drive.google.com/drive/quota"
+    },
+      {
+      id: 5,
+      title: "Social studies",
+      subject: "Science",
+      className: "3",
+      description: "Complete the water cycle worksheet.",
+      dueDate: "2026-10-14",
       link: "https://drive.google.com/drive/quota"
     }
   ];
