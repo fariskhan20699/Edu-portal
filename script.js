@@ -39,10 +39,15 @@ function buildSampleData() {
   ];
 
   homework = [
-   /* { id: 1, title: "Mathematics Chapter 3", subject: "Mathematics", className: "3", description: "Solve questions 1–20 from the chapter on addition and subtraction.", dueDate: "2026-09-10" },
-    { id: 2, title: "English Comprehension", subject: "English", className: "4", description: "Read the passage on page 34 and answer the five questions that follow.", dueDate: "2026-09-12" },
-    { id: 3, title: "Science  The Water Cycle", subject: "Science", className: "5", description: "Draw and label a diagram of the water cycle in your notebook.", dueDate: "2026-09-14" },
-    { id: 4, title: "Urdu Ibarat", subject: "Urdu", className: "6", description: "Rat karein or narrate saba'q number 6 in class.", dueDate: "2026-09-15" }*/
+    {
+    id: 5,
+    title: "Science Assignment",
+    subject: "Science",
+    className: "5",
+    description: "Complete the water cycle worksheet.",
+    dueDate: "2026-09-15",
+    link: "https://drive.google.com/drive/quota"
+    }
   ];
 
   tests = [
