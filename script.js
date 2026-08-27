@@ -1126,20 +1126,54 @@ function renderStudentProfile() {
 /* ---------------------------------------------------------------------
    13. STUDENT — HOMEWORK / TESTS LIST
    --------------------------------------------------------------------- */
-
 function renderStudentHomework() {
   const s = currentStudent();
-  const list = homework.filter(h => h.className === s.className).sort((a, b) => (a.dueDate || "").localeCompare(b.dueDate || ""));
+
+  const list = homework
+    .filter(h => h.className === s.className)
+    .sort((a, b) => (a.dueDate || "").localeCompare(b.dueDate || ""));
+
   const wrap = document.getElementById("studentHomeworkList");
-  if (!list.length) { wrap.innerHTML = emptyState("No homework assigned", "Your teacher hasn't posted any homework for your class yet."); return; }
+
+  if (!list.length) {
+    wrap.innerHTML = emptyState(
+      "No homework assigned",
+      "Your teacher hasn't posted any homework for your class yet."
+    );
+    return;
+  }
+
   wrap.innerHTML = list.map(h => `
     <div class="item-card">
+
       <div class="item-card-main">
         <h4>${escapeHtml(h.title)}</h4>
-        <div class="item-meta"><span>📘 ${escapeHtml(h.subject)}</span><span>📅 Due ${formatDate(h.dueDate)}</span></div>
-        <div class="item-desc">${escapeHtml(h.description)}</div>
+
+        <div class="item-meta">
+          <span>📘 ${escapeHtml(h.subject)}</span>
+          <span>📅 Due ${formatDate(h.dueDate)}</span>
+        </div>
+
+        <div class="item-desc">
+          ${escapeHtml(h.description)}
+        </div>
       </div>
-    </div>`).join("");
+
+      <div class="item-card-actions">
+        ${
+          h.link
+            ? `<a href="${escapeHtml(h.link)}"
+                  class="btn btn-primary btn-sm"
+                  target="_blank"
+                  rel="noopener noreferrer">
+                  Open Homework
+               </a>`
+            : `<span class="badge badge-red">No homework link</span>`
+        }
+      </div>
+
+    </div>
+  `).join("");
 }
 
 function renderStudentTests() {
